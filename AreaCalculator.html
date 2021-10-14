@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Area Claculator</title>
+
+</head>
+
+<body>
+    <h1>Area Calculator</h1>
+    <div class="main">
+        <div class="left__side">
+            <div class="result">
+                <span>Result : </span>
+                <span id="result"></span>
+            </div>
+            <div class="value">
+                <input type="number" id="width" placeholder="Width">
+                <input type="number" id="breadth" placeholder="Breadth">
+            </div>
+
+            <div class="btn__block">
+                <button onclick="addList()" class="btn">Store</button>
+            <button onclick="clearResult()" class="btn">Clear</button>
+            <button onclick="calcArea()" class="btn">Calculate</button>
+            </div>
+        </div>
+
+        <div class="ver__line"></div>
+
+        <div class="right__side">
+            <h1>History</h1>
+            <div class="history">
+                <ol id="list" class="list"></ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //select
+        let width = document.getElementById("width");
+        let breadth = document.getElementById("breadth");
+        let result = document.getElementById("result");
+        let list = document.getElementById("list");
+
+        function calcArea() {
+
+            if (width.value == 0 || breadth.value == 0) {
+                alert("Please fill your width and breadth.")
+            } else {
+                let area = width.value * breadth.value;
+                result.innerHTML = `${width.value}  ft x ${breadth.value} ft = ${area} ft<sup>2</sup>`;
+                width.value = "";
+                breadth.value = "";
+            }
+
+        }
+
+        function addList() {
+
+            if (result.innerHTML == "") {
+                alert("Result is empty")
+            } else {
+                list.innerHTML += `<li>${result.innerHTML}</li>`;
+                clearResult();
+            }
+        }
+
+        function clearResult() {
+            result.innerHTML = "";
+        }
+
+    </script>
+</body>
+
+</html>
